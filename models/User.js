@@ -3,7 +3,7 @@ const mongoose = require('mongoose'); // mongoose 가져오기
 // Model: Schema를 감싸주는 것
 // Schema: DB내에 어떤 구조로 데이터가 저장되는가를 나타내는 데이터베이스 구조
 
-const userSchema = moongoose.useSchema({
+const userSchema = mongoose.Schema({
   name: {
     type: String,
     maxlength: 50,
@@ -36,6 +36,6 @@ const userSchema = moongoose.useSchema({
   },
 });
 
-const User = mongoose.model('User', useSchema); // Schema를 model로 감싸주기
+const User = mongoose.model('User', userSchema); // Schema를 model로 감싸주기
 
 module.exports = { User };
