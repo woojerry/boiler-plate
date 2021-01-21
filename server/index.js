@@ -30,6 +30,10 @@ app.get('/', (req, res) => {
   res.send('Hello World! ~ 안녕하세요..');
 });
 
+app.get('/api/hello', (req, res) => {
+  res.send('안녕하세요');
+});
+
 app.post('/register', (req, res) => {
   // 회원가입 할 때 필요한 정보들을 client에서 가져오면
   // 그것들을 DB에 넣어준다.
@@ -58,7 +62,7 @@ app.post('/api/users/login', (req, res) => {
     user.comparePassword(req.body.password, (err, isMatch) => {
       if (!isMatch)
         return res.json({
-          loginSucess: false,
+          loginSuccess: false,
           message: '비밀번호가 틀렸습니다.',
           password: req.body.password,
         });
@@ -70,7 +74,7 @@ app.post('/api/users/login', (req, res) => {
         res
           .cookie('x_auth', user.token)
           .status(200)
-          .json({ loginSucess: true, userId: user._id });
+          .json({ loginSuccess: true, userId: user._id });
       });
     });
   });
