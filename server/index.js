@@ -34,7 +34,7 @@ app.get('/api/hello', (req, res) => {
   res.send('안녕하세요');
 });
 
-app.post('/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
   // 회원가입 할 때 필요한 정보들을 client에서 가져오면
   // 그것들을 DB에 넣어준다.
   const user = new User(req.body);
@@ -70,7 +70,7 @@ app.post('/api/users/login', (req, res) => {
       user.generateToken((err, user) => {
         if (err) return res.status(400).send(err);
 
-        // 토큰을 저장한다. 어디에? 쿠키? ,로컬스토리지 중 하나 여기선 쿠키
+        // 토큰을 저장한다. 어디에? 쿠키? ,로컬스토리지 중 하나. 여기선 쿠키
         res
           .cookie('x_auth', user.token)
           .status(200)
